@@ -80,7 +80,7 @@ export default function Nav() {
         id="mobile-menu"
         aria-hidden={!open}
         className={
-          `md:hidden fixed inset-x-0 top-16 z-50 bg-blue-700 transition-all duration-200 transform ` +
+          `md:hidden fixed inset-x-0 top-25 z-20 bg-blue-700 transition-all duration-200 transform ` +
           (open ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none')
         }
       >
