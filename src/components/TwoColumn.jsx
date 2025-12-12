@@ -1,4 +1,5 @@
 import InfoCard from './InfoCard.jsx'
+import ContactCta from './ContactCta.jsx'
 import equipoImg from '../assets/img/equipo.jpeg'
 
 export default function TwoColumn() {
@@ -51,14 +52,6 @@ export default function TwoColumn() {
               <InfoCard title="Construcción sin ruido" text="Entregas pequeñas cada semana para que pruebes y ajustes rápido." />
               <InfoCard title="Soporte directo" text="Hablas con quienes desarrollan; sin capas intermedias ni respuestas genéricas." />
             </div>
-            <div className="grid sm:grid-cols-3 gap-4" id="beneficios">
-              {[{ title: 'Sin lenguaje difícil', text: 'Explicamos avances en términos de negocio, no solo técnicos.' }, { title: 'Documentación ligera', text: 'Guías breves para que tu equipo use y mantenga el sistema.' }, { title: 'Entrega responsable', text: 'Preferimos cumplir algo pequeño y sólido antes que prometer de más.' }].map((item) => (
-                <div key={item.title} className="rounded-xl border border-white/10 bg-slate-900/40 px-4 py-4">
-                  <p className="text-sm text-white/60">{item.title}</p>
-                  <p className="font-semibold mt-1">{item.text}</p>
-                </div>
-              ))}
-            </div>
             <div className="flex flex-col sm:flex-row sm:items-center gap-3" id="casos">
               <div className="flex items-center gap-2 text-sm text-white/70">
                 <span className="inline-block h-3 w-3 rounded-full bg-emerald-400" />
@@ -72,22 +65,7 @@ export default function TwoColumn() {
           </div>
         </div>
 
-        <div id="contacto" className="mt-10">
-          <div className="rounded-3xl border border-white/10 bg-white/5 px-6 py-6 md:py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4 shadow-2xl shadow-blue-900/20">
-            <div>
-              <p className="text-sm text-white/70">¿Listo para conversar?</p>
-              <p className="text-xl font-semibold">Contanos tu reto y armamos juntos el primer paso sin compromiso.</p>
-            </div>
-            <div className="flex gap-3">
-              <a href="mailto:hola@nts-solutions.com" className="rounded-full bg-white !text-slate-900 px-4 py-2 font-semibold hover:-translate-y-[1px] transition">
-                Escríbinos
-              </a>
-              <a href="tel:+541100000000" className="rounded-full border border-white/30 px-4 py-2 font-semibold text-white/90 hover:border-white/60 transition">
-                Llamar ahora
-              </a>
-            </div>
-          </div>
-        </div>
+        <ContactCta />
       </div>
     </section>
   )

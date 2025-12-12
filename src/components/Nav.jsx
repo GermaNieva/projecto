@@ -1,15 +1,38 @@
 import { useState, useEffect, useRef } from 'react'
 
-const NAV_ITEMS = [
-  { href: '#resumen', label: 'Inicio' },
-  { href: '#soluciones', label: 'Servicios' },
-  { href: '#beneficios', label: 'Beneficios' },
-  { href: '#casos', label: 'Contacto' }
-]
+const getNavItems = (onServicesPage, onBenefitsPage) => {
+  if (onServicesPage) {
+    return [
+      { href: '/', label: 'Inicio' },
+      { href: '#servicios', label: 'Servicios' },
+      { href: '/beneficios', label: 'Beneficios' },
+      { href: '#contacto', label: 'Contacto' }
+    ]
+  }
+
+  if (onBenefitsPage) {
+    return [
+      { href: '/', label: 'Inicio' },
+      { href: '/servicios', label: 'Servicios' },
+      { href: '#beneficios', label: 'Beneficios' },
+      { href: '#contacto', label: 'Contacto' }
+    ]
+  }
+
+  return [
+    { href: '#resumen', label: 'Inicio' },
+    { href: '/servicios', label: 'Servicios' },
+    { href: '/beneficios', label: 'Beneficios' },
+    { href: '#contacto', label: 'Contacto' }
+  ]
+}
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
   const navRef = useRef(null)
+  const onServicesPage = typeof window !== 'undefined' && window.location.pathname.startsWith('/servicios')
+  const onBenefitsPage = typeof window !== 'undefined' && window.location.pathname.startsWith('/beneficios')
+  const NAV_ITEMS = getNavItems(onServicesPage, onBenefitsPage)
 
   // Cerrar con Escape y al click fuera
   useEffect(() => {

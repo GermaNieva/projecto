@@ -18,14 +18,14 @@ export default function Hero() {
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-sm border border-white/10">
               <span className="w-2 h-2 rounded-full bg-emerald-400" aria-hidden />
-              Equipo boutique de software a medida
+              Software a medida
             </div>
 
             <h1 className="text-4xl md:text-5xl font-semibold leading-tight">
-              Construimos tu solución digital con un equipo cercano y claro
+              Creamos soluciones digitales que impulsan tu negocio
             </h1>
             <p className="text-lg text-white/80 max-w-2xl">
-              Somos un equipo pequeño y dedicado. Escuchamos tus procesos, proponemos un plan sencillo y desarrollamos justo lo que necesitas, sin complicar el camino.
+               Escuchamos tus procesos, proponemos un plan sencillo y desarrollamos justo lo que necesitas, sin complicar el camino.
             </p>
 
             <div className="flex flex-wrap gap-3">
