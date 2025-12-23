@@ -8,10 +8,10 @@ export default function ContactCta() {
         </div>
         <div className="flex gap-3">
           <a href="mailto:hola@nts-solutions.com" className="rounded-full bg-white !text-slate-900 px-4 py-2 font-semibold hover:-translate-y-[1px] transition">
-            Escríbenos
+            Escríbinos
           </a>
           <a href="tel:+541100000000" className="rounded-full border border-white/30 px-4 py-2 font-semibold text-white/90 hover:border-white/60 transition">
-            Llamar ahora
+            Llama ahora
           </a>
         </div>
       </div>

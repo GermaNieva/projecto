@@ -65,7 +65,7 @@ export default function Services() {
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 rounded-2xl border border-white/10 bg-white/5 px-5 py-5 shadow-lg shadow-blue-900/30">
           <div className="text-white/80 text-sm md:text-base">
             <p className="font-semibold text-white">No sabes cuál elegir?</p>
-            <p>Cuéntanos tu caso y proponemos un alcance simple en 5 días.</p>
+            <p>Contanos tu caso y propondremos un alcance simple en 5 días.</p>
           </div>
           <div className="flex gap-3">
             <a href="#contacto" className="rounded-full bg-white !text-slate-900 px-4 py-2 font-semibold shadow hover:-translate-y-[1px] transition">

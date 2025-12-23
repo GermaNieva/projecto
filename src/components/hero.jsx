@@ -21,7 +21,7 @@ export default function Hero() {
               Software a medida
             </div>
 
-            <h1 className="text-4xl md:text-5xl font-semibold leading-tight">
+            <h1 className="text-4xl md:text-4xl font-semibold leading-tight">
               Creamos soluciones digitales que impulsan tu negocio
             </h1>
             <p className="text-lg text-white/80 max-w-2xl">

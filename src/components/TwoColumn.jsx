@@ -1,6 +1,6 @@
 import InfoCard from './InfoCard.jsx'
 import ContactCta from './ContactCta.jsx'
-import equipoImg from '../assets/img/equipo.jpeg'
+import equipoImg from '../assets/img/equipo-it.jpeg'
 
 export default function TwoColumn() {
   return (
@@ -25,7 +25,7 @@ export default function TwoColumn() {
               <div className="relative rounded-3xl overflow-hidden ring-1 ring-blue-300/30 shadow-2xl shadow-blue-900/30">
                 <img
                   src={equipoImg}
-                  alt="Equipo de desarrollo colaborando en oficina"
+                  alt="Equipo colaborando en un proyecto"
                   loading="lazy"
                   className="w-full h-full object-cover block"
                 />
