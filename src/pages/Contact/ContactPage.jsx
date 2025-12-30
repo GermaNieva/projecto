@@ -13,6 +13,8 @@ export default function ContactPage() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [message, setMessage] = useState('')
+  const [submitState, setSubmitState] = useState('idle')
+  const [submitError, setSubmitError] = useState('')
 
   const mailtoHref = useMemo(() => {
     const subject = encodeURIComponent(`Contacto desde la web: ${name || 'Nuevo mensaje'}`)
@@ -24,7 +26,34 @@ export default function ContactPage() {
 
   function onSubmit(e) {
     e.preventDefault()
-    window.location.href = mailtoHref
+    setSubmitError('')
+    setSubmitState('submitting')
+
+    const formName = 'contact'
+    const payload = {
+      'form-name': formName,
+      name,
+      email,
+      message
+    }
+
+    const body = new URLSearchParams(payload).toString()
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body
+    })
+      .then(() => {
+        setSubmitState('success')
+        setName('')
+        setEmail('')
+        setMessage('')
+      })
+      .catch(() => {
+        setSubmitState('error')
+        setSubmitError('No se pudo enviar el formulario. Probá de nuevo o usá “Abrir en mi correo”.')
+      })
   }
 
   return (
@@ -57,10 +86,27 @@ export default function ContactPage() {
               <h2 className="text-xl font-semibold">Formulario</h2>
               <p className="text-sm text-white/70 mt-1">Contanos qué necesitás y te respondemos por email.</p>
 
-              <form className="mt-6 space-y-4" onSubmit={onSubmit}>
+              <form
+                className="mt-6 space-y-4"
+                name="contact"
+                method="POST"
+                action="/contacto?enviado=1"
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                onSubmit={onSubmit}
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                <p className="hidden">
+                  <label>
+                    No completar si sos humano:{' '}
+                    <input name="bot-field" />
+                  </label>
+                </p>
+
                 <label className="block">
                   <span className="block text-sm text-white/70 mb-1">Nombre</span>
                   <input
+                    name="name"
                     className="w-full rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -74,6 +120,7 @@ export default function ContactPage() {
                   <span className="block text-sm text-white/70 mb-1">Email</span>
                   <input
                     type="email"
+                    name="email"
                     className="w-full rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -86,6 +133,7 @@ export default function ContactPage() {
                 <label className="block">
                   <span className="block text-sm text-white/70 mb-1">Mensaje</span>
                   <textarea
+                    name="message"
                     className="min-h-[140px] w-full rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-white"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
@@ -94,12 +142,25 @@ export default function ContactPage() {
                   />
                 </label>
 
+                {submitState === 'success' && (
+                  <div className="rounded-2xl border border-emerald-400/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-100">
+                    ¡Listo! Mensaje enviado. Te respondemos a la brevedad.
+                  </div>
+                )}
+
+                {submitState === 'error' && (
+                  <div className="rounded-2xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm text-red-100">
+                    {submitError}
+                  </div>
+                )}
+
                 <div className="flex flex-col sm:flex-row gap-3">
                   <button
                     type="submit"
+                    disabled={submitState === 'submitting'}
                     className="inline-flex items-center justify-center rounded-full bg-white !text-slate-900 px-5 py-3 font-semibold shadow hover:-translate-y-[1px] transition"
                   >
-                    Enviar
+                    {submitState === 'submitting' ? 'Enviando…' : 'Enviar'}
                   </button>
                   <a
                     href={mailtoHref}
