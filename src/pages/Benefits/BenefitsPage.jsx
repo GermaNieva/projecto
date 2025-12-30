@@ -1,5 +1,6 @@
-import Logo from './Logo.jsx'
-import Nav from './Nav.jsx'
+import Logo from '../../components/Logo/Logo.jsx'
+import Nav from '../../components/Nav/Nav.jsx'
+import ContactCta from '../../components/ContactCta/ContactCta.jsx'
 
 const BENEFITS = [
   { title: 'Sin lenguaje difícil', text: 'Explicamos avances en términos de negocio para que tomes decisiones rápido.' },
@@ -22,11 +23,11 @@ export default function BenefitsPage() {
             <Logo />
             <Nav />
           </div>
-          <div className="mt-12 max-w-3xl space-y-4">
+          <div className="mt-12 max-w-4xl space-y-4">
             <p className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide border border-white/20">
               Beneficios
             </p>
-            <h1 className="text-4xl md:text-5xl font-semibold leading-tight">
+            <h1 className="text-4xl md:text-4xl font-semibold leading-tight">
               Cómo te acompañamos durante el proyecto
             </h1>
             <p className="text-lg text-white/80">
@@ -37,7 +38,7 @@ export default function BenefitsPage() {
       </header>
 
       <main className="pb-16">
-        <section className="max-w-6xl mx-auto px-4 lg:px-6 py-10">
+        <section id="beneficios" className="max-w-6xl mx-auto px-4 lg:px-6 py-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {BENEFITS.map((item) => (
               <article key={item.title} className="rounded-xl border border-white/10 bg-white/5 px-4 py-4 shadow-lg shadow-slate-900/30">
@@ -46,6 +47,10 @@ export default function BenefitsPage() {
               </article>
             ))}
           </div>
+        </section>
+
+        <section className="max-w-6xl mx-auto px-4 lg:px-6">
+          <ContactCta />
         </section>
       </main>
     </div>

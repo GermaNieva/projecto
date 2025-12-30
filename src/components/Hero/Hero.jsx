@@ -1,5 +1,5 @@
-import Logo from './Logo.jsx'
-import Nav from './Nav.jsx'
+import Logo from '../Logo/Logo.jsx'
+import Nav from '../Nav/Nav.jsx'
 
 export default function Hero() {
   return (
@@ -92,11 +92,10 @@ export default function Hero() {
               </ol>
 
               <div className="mt-6 flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/80 px-4 py-3">
-                <div className="h-10 w-10 rounded-full bg-emerald-400/20 text-emerald-100 flex items-center justify-center font-semibold">
-                  SLA
+                <div className="h-10 rounded-full bg-emerald-400/20 text-emerald-100 flex items-center justify-center font-semibold px-3 text-sm">
+                  Soporte
                 </div>
-                <div className="text-sm text-white/80">
-                  Soporte directo con el equipo que desarrolla: un canal único y respuestas rápidas.
+                <div className="text-sm text-white/80"> directo con el equipo que desarrolla: un canal único y respuestas rápidas.
                 </div>
               </div>
             </div>

@@ -1,6 +1,6 @@
-import InfoCard from './InfoCard.jsx'
-import ContactCta from './ContactCta.jsx'
-import equipoImg from '../assets/img/equipo-it.jpeg'
+import InfoCard from '../InfoCard/InfoCard.jsx'
+import ContactCta from '../ContactCta/ContactCta.jsx'
+import equipoImg from './assets/equipo-it.jpeg'
 
 export default function TwoColumn() {
   return (
@@ -58,7 +58,7 @@ export default function TwoColumn() {
                 Preferimos relaciones largas: iteramos y mejoramos con tus usuarios
               </div>
               <div className="h-px bg-white/15 flex-1 sm:block hidden" aria-hidden />
-              <a href="#contacto" className="text-sm font-semibold text-blue-200 hover:text-white">
+              <a href="/contacto" className="text-sm font-semibold text-blue-200 hover:text-white">
                 Conversemos sobre tu caso →
               </a>
             </div>

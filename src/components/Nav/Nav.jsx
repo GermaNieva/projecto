@@ -1,12 +1,18 @@
 import { useState, useEffect, useRef } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
-const getNavItems = (onServicesPage, onBenefitsPage) => {
+const getNavItems = (pathname) => {
+  const onServicesPage = pathname.startsWith('/servicios')
+  const onBenefitsPage = pathname.startsWith('/beneficios')
+  const onContactPage = pathname.startsWith('/contacto')
+  const onHomePage = pathname === '/' || pathname === ''
+
   if (onServicesPage) {
     return [
       { href: '/', label: 'Inicio' },
       { href: '#servicios', label: 'Servicios' },
       { href: '/beneficios', label: 'Beneficios' },
-      { href: '#contacto', label: 'Contacto' }
+      { href: '/contacto', label: 'Contacto' }
     ]
   }
 
@@ -15,24 +21,68 @@ const getNavItems = (onServicesPage, onBenefitsPage) => {
       { href: '/', label: 'Inicio' },
       { href: '/servicios', label: 'Servicios' },
       { href: '#beneficios', label: 'Beneficios' },
-      { href: '#contacto', label: 'Contacto' }
+      { href: '/contacto', label: 'Contacto' }
+    ]
+  }
+
+  if (onContactPage) {
+    return [
+      { href: '/', label: 'Inicio' },
+      { href: '/servicios', label: 'Servicios' },
+      { href: '/beneficios', label: 'Beneficios' },
+      { href: '/contacto', label: 'Contacto' }
     ]
   }
 
   return [
-    { href: '#resumen', label: 'Inicio' },
+    { href: onHomePage ? '#resumen' : '/#resumen', label: 'Inicio' },
     { href: '/servicios', label: 'Servicios' },
     { href: '/beneficios', label: 'Beneficios' },
-    { href: '#contacto', label: 'Contacto' }
+    { href: '/contacto', label: 'Contacto' }
   ]
 }
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
   const navRef = useRef(null)
-  const onServicesPage = typeof window !== 'undefined' && window.location.pathname.startsWith('/servicios')
-  const onBenefitsPage = typeof window !== 'undefined' && window.location.pathname.startsWith('/beneficios')
-  const NAV_ITEMS = getNavItems(onServicesPage, onBenefitsPage)
+  const { pathname } = useLocation()
+  const NAV_ITEMS = getNavItems(pathname)
+
+  const renderNavLink = (item) => {
+    const isHash = item.href.startsWith('#')
+    const isInternalRoute = item.href.startsWith('/')
+
+    if (isHash) {
+      return (
+        <a
+          href={item.href}
+          className="px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-white hover:underline"
+        >
+          {item.label}
+        </a>
+      )
+    }
+
+    if (isInternalRoute) {
+      return (
+        <Link
+          to={item.href}
+          className="px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-white hover:underline"
+        >
+          {item.label}
+        </Link>
+      )
+    }
+
+    return (
+      <a
+        href={item.href}
+        className="px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-white hover:underline"
+      >
+        {item.label}
+      </a>
+    )
+  }
 
   // Cerrar con Escape y al click fuera
   useEffect(() => {
@@ -68,12 +118,7 @@ export default function Nav() {
         <ul className="flex gap-6 items-center">
           {NAV_ITEMS.map((item) => (
             <li key={item.href}>
-              <a
-                href={item.href}
-                className="px-2 py-1 rounded focus:outline-none focus:ring-2 focus:ring-white hover:underline"
-              >
-                {item.label}
-              </a>
+              {renderNavLink(item)}
             </li>
           ))}
         </ul>
@@ -88,8 +133,8 @@ export default function Nav() {
         onClick={() => setOpen((v) => !v)}
       >
         {!open ? (
-          <svg className="w-6 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24 items-center justify-center" >
-            <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M4 8h16 M4 16h16 M4 24h16" />
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M4 6h16 M4 12h16 M4 18h16" />
           </svg>
         ) : (
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,21 +148,32 @@ export default function Nav() {
         id="mobile-menu"
         aria-hidden={!open}
         className={
-          `md:hidden fixed inset-x-0 top-25 z-20 bg-blue-700 transition-all duration-200 transform ` +
+          `md:hidden fixed inset-x-0 top-16 z-20 bg-blue-700 transition-all duration-200 transform ` +
           (open ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none')
         }
       >
         <ul role="menu" className="flex flex-col gap-2 p-4 max-w-6xl mx-auto">
           {NAV_ITEMS.map((item) => (
             <li key={item.href}>
-              <a
-                role="menuitem"
-                href={item.href}
-                className="block px-3 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-white"
-                onClick={() => setOpen(false)}
-              >
-                {item.label}
-              </a>
+              {item.href.startsWith('/') ? (
+                <Link
+                  role="menuitem"
+                  to={item.href}
+                  className="block px-3 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-white"
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  role="menuitem"
+                  href={item.href}
+                  className="block px-3 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-white"
+                  onClick={() => setOpen(false)}
+                >
+                  {item.label}
+                </a>
+              )}
             </li>
           ))}
         </ul>
@@ -125,4 +181,3 @@ export default function Nav() {
     </nav>
   )
 }
-// ...existing code...
