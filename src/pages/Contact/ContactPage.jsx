@@ -3,10 +3,10 @@ import Logo from '../../components/Logo/Logo.jsx'
 import Nav from '../../components/Nav/Nav.jsx'
 
 const CONTACT = {
-  email: 'hola@igs-soluciones.com',
-  phoneDisplay: '+54 11 0000-0000',
-  phoneE164: '+541100000000',
-  whatsappE164: '541100000000'
+  email: 'igs.solucionesdigitales@gmail.com',
+  phoneDisplay: '+54 9 3834-522545',
+  phoneE164: '+5493834522545',
+  whatsappE164: '5493834522545'
 }
 
 export default function ContactPage() {
@@ -198,7 +198,7 @@ export default function ContactPage() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Escribir por WhatsApp
+                      Escribinos por WhatsApp
                     </a>
                   </div>
                 </div>

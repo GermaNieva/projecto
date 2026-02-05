@@ -17,8 +17,8 @@ export default function Footer() {
         </div>
         <div className="space-y-2 text-sm text-white/80">
           <p className="text-sm font-semibold">Contacto</p>
-          <p>hola@igs-soluciones.com</p>
-          <p>+54 11 0000-0000</p>
+          <p>igs.solucionesdigitales@gmail.com</p>
+          <p>+54 9 3834-522545</p>
           <p>Soporte directo con el equipo que desarrolla.</p>
         </div>
       </div>
