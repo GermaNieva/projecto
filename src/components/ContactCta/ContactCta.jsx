@@ -9,7 +9,12 @@ export default function ContactCta() {
           <p className="text-xl font-semibold">Contanos tu reto y armamos juntos el primer paso sin compromiso.</p>
         </div>
         <div className="flex gap-3">
-          <a href={`mailto:${CONTACT.email}`} className="rounded-full bg-white !text-slate-900 px-4 py-2 font-semibold hover:-translate-y-[1px] transition">
+          <a
+            href={`https://wa.me/${CONTACT.whatsappE164}?text=${encodeURIComponent('Hola, quiero consultar por un proyecto')}`}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full bg-white !text-slate-900 px-4 py-2 font-semibold hover:-translate-y-[1px] transition"
+          >
             Escríbinos
           </a>
           <a href={`tel:${CONTACT.phoneE164}`} className="rounded-full border border-white/30 px-4 py-2 font-semibold text-white/90 hover:border-white/60 transition">
