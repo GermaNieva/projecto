@@ -1,3 +1,5 @@
+import { CONTACT } from '../../config/contact.js'
+
 export default function Footer() {
   return (
     <footer className="bg-slate-950 text-white border-t border-white/10">
@@ -17,8 +19,8 @@ export default function Footer() {
         </div>
         <div className="space-y-2 text-sm text-white/80">
           <p className="text-sm font-semibold">Contacto</p>
-          <p>igs.solucionesdigitales@gmail.com</p>
-          <p>+54 9 3834-522545</p>
+          <p>{CONTACT.email}</p>
+          <p>{CONTACT.phoneDisplay}</p>
           <p>Soporte directo con el equipo que desarrolla.</p>
         </div>
       </div>

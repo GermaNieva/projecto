@@ -30,13 +30,13 @@ export default function Hero() {
 
             <div className="flex flex-wrap gap-3">
               <a
-                href="#resumen"
+                href="/contacto"
                 className="inline-flex items-center gap-2 rounded-full bg-white !text-slate-900 px-5 py-3 font-semibold shadow-lg shadow-blue-900/30 transition hover:-translate-y-[1px]"
               >
                 Agenda una demo
               </a>
               <a
-                href="#soluciones"
+                href="/servicios#servicios"
                 className="inline-flex items-center gap-2 rounded-full border border-white/30 px-5 py-3 font-semibold text-white/90 transition hover:border-white/60"
               >
                 Ver cómo trabajamos

@@ -1,13 +1,7 @@
 import { useMemo, useState } from 'react'
 import Logo from '../../components/Logo/Logo.jsx'
 import Nav from '../../components/Nav/Nav.jsx'
-
-const CONTACT = {
-  email: 'igs.solucionesdigitales@gmail.com',
-  phoneDisplay: '+54 9 3834-522545',
-  phoneE164: '+5493834522545',
-  whatsappE164: '5493834522545'
-}
+import { CONTACT } from '../../config/contact.js'
 
 export default function ContactPage() {
   const [name, setName] = useState('')

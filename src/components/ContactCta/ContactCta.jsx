@@ -1,3 +1,5 @@
+import { CONTACT } from '../../config/contact.js'
+
 export default function ContactCta() {
   return (
     <div id="contacto" className="mt-10">
@@ -7,11 +9,11 @@ export default function ContactCta() {
           <p className="text-xl font-semibold">Contanos tu reto y armamos juntos el primer paso sin compromiso.</p>
         </div>
         <div className="flex gap-3">
-          <a href="mailto:hola@nts-solutions.com" className="rounded-full bg-white !text-slate-900 px-4 py-2 font-semibold hover:-translate-y-[1px] transition">
+          <a href={`mailto:${CONTACT.email}`} className="rounded-full bg-white !text-slate-900 px-4 py-2 font-semibold hover:-translate-y-[1px] transition">
             Escríbinos
           </a>
-          <a href="tel:+541100000000" className="rounded-full border border-white/30 px-4 py-2 font-semibold text-white/90 hover:border-white/60 transition">
-            Llama ahora
+          <a href={`tel:${CONTACT.phoneE164}`} className="rounded-full border border-white/30 px-4 py-2 font-semibold text-white/90 hover:border-white/60 transition">
+            Llamar
           </a>
         </div>
       </div>
