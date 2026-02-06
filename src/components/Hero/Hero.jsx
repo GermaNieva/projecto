@@ -22,7 +22,7 @@ export default function Hero() {
             </div>
 
             <h1 className="text-4xl md:text-4xl font-semibold leading-tight">
-              Creamos soluciones digitales que impulsan tu negocio
+              Creamos soluciones web que impulsan tu negocio
             </h1>
             <p className="text-lg text-white/80 max-w-2xl">
                Escuchamos tus procesos, proponemos un plan sencillo y desarrollamos justo lo que necesitas, sin complicar el camino.

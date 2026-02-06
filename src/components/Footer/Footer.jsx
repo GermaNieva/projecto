@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="bg-slate-950 text-white border-t border-white/10">
       <div className="max-w-6xl mx-auto px-4 py-10 grid gap-8 md:grid-cols-3">
         <div className="space-y-2">
-          <p className="text-lg font-semibold">IGS Soluciones Digitales</p>
+          <p className="text-lg font-semibold">IGS Soluciones Web</p>
           <p className="text-sm text-white/70">Equipo que diseña y construye software a medida.</p>
         </div>
         <div>

@@ -4,7 +4,7 @@ export default function Logo() {
       <div className="w-10 h-10 rounded-full bg-white text-blue-800 font-bold flex items-center justify-center">
         IGS
       </div>
-        <span className="font-semibold text-lg">Soluciones Digitales</span>
+        <span className="font-semibold text-lg">Soluciones Web</span>
     </a>
   )
 }
